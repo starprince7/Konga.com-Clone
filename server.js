@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Transcation = require("./model/transcationSchema");
 const { default: Axios } = require("axios");
 const https = require('https');
-const { response } = require("express");
+
 
 const app = express();
 
@@ -18,7 +19,7 @@ const port = 5000;
 
 // db connection
 const dbURI =
-  "mongodb+srv://starprince:starprince7@starprince.m9v4i.mongodb.net/Data-ecommerce";
+  `mongodb+srv://starprince:${process.env.PASSWORD_DB}@starprince.m9v4i.mongodb.net/Data-ecommerce`;
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
