@@ -1,0 +1,31 @@
+
+.payment__container {
+    min-height: 450px;
+    width: 350px;
+    border-radius: 4px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: auto;
+    background: white;
+    box-shadow: 1px 2px 5px grey;
+}
+
+.payment__container > p {
+    margin: 45px 0;
+}
+
+.payment__back {
+    padding: 50px 0;
+    background-color: rgb(247, 246, 246);
+}
+
+.payment__paystack-container button {
+    outline: none;
+    padding: 12px 10%;
+    font-weight: bold;
+    margin: 30px;
+    background: #33b27b;
+    color: white;
+    border-radius: 3px;
+    border: none;
+}

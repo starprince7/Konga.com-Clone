@@ -35,4 +35,5 @@ function SumTotal({ cart }) {
   );
 }
 
+
 export default SumTotal;

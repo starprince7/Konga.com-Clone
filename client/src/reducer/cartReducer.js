@@ -5,6 +5,7 @@ import {
 } from "../utility/cartUtility";
 
 export const initCart = [];
+
 export const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":

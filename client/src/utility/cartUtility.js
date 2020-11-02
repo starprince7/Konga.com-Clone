@@ -7,9 +7,10 @@ export const addItemToMyCart = (cart, newItem) => {
     // Update the quantity property while mapping through the cart
     const newArray = cart.map((item) =>
       item.id === newItem.id
-        ? { ...newItem, quantity: (newItem.quantity + 1) }
-        : [...cart, item]
+        ? { ...item, quantity: (item.quantity + 1) }
+        : item
     );
+    console.log('The new Array b4 returning it!', newArray)
     return newArray;
   } else {
     console.log('No Item Does not exits')
@@ -31,7 +32,7 @@ export const decreamentQty = (cart, ID) => {
   const newCart = [...cart];
   const newArray = newCart.map((item) =>
     item.id === ID
-      ? { ...item, quantity: ( item.quantity - 1) }
+      ? { ...item, quantity: ( item.quantity > 1 ? item.quantity - 1 : 1) }
       : item
   );
   return newArray;

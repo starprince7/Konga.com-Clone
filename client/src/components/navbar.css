@@ -1,25 +1,56 @@
-.header {}
+.mobile__header {
+    display: none;
+}
+
+
+.header__logo {
+    margin: 15px;
+    float: left;
+  }
+
+  .header__logo > img {
+    max-height: 2.1875rem;
+    width: auto;
+  }
+
+.header__search-mobile {
+    display: none;
+}
 
 .navbar {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 7px 0;
+    padding: 1px 0;
     box-sizing: border-box;
     font-size: 14px;
-    background-color: rgb(255, 39, 75);
+    background-color: #ed017f;
   }
 
 .navbar__search > input {
     width: 100%;
     height: 12px;
-    padding: 20px;
+    padding: 19px;
     border: none;
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
     outline: none;
 }
 
+button.navbar__search-icon {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px 15px 0 15px;
+    background-color: #fba100;
+    border-radius: 0 3px 3px 0;
+}
+
+.navbar__search-icon > svg {
+    fill: white!important;
+}
+
 .navbar__search {
+    display: flex;
       flex: 1;
       min-width: 200px;                                    ;
   }
@@ -27,10 +58,12 @@
   .navbar__links {
       display: flex;
       align-items: center;
+      text-align: left;
   }
 
   .navbar__links a {
       font-size: 13px;
+      font-weight: 400;
   }
 
   ul {
@@ -40,10 +73,14 @@
 
   .cart {
       width: 90px;
-      background-color: rgb(7, 197, 7);
+      background-color: #33b27b;
       padding: 1px;
       box-sizing: border-box;
       border-radius: 3px;
+      transition: all .4s
+  }
+  .cart:hover {
+    background-color: #2d9d6c;
   }
 
   .cart a {
@@ -61,6 +98,10 @@
       height: 38px;
   }
 
+  .cart__logo {
+      margin: 0 3.5px;
+  }
+
   .cart__greenbox {
       font-size: 12px;
       margin: 8px;
@@ -68,8 +109,10 @@
 
   .cart__greenbox > div {
       background-color: white;
-      width: 16px;
-      padding: 2px;
+      font-weight: 500;
+      font-size: 13px;
+      width: fit-content;
+      padding: 3px 5px;
       border-radius: 2px;
       color: black;
   }
@@ -80,7 +123,14 @@
   }
 
   .navbar__navigation {
-      padding: 5px;
+      padding: 10px;
       color: white;
-      background-color: rgb(202, 9, 42);
+      background-color: #94004F;
+      box-shadow: 1px 1px 1px black;
+  }
+
+  .navbar__navigation a {
+      font-size: 13px;
+      font-weight: 400;
+      margin-right: 60px
   }

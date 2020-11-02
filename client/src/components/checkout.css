@@ -1,0 +1,42 @@
+.checkout__flex-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout__form {
+    width: 400px;
+    min-height: 400px;
+    padding: 50px 10px 10px 10px;
+    margin: 30px;
+    box-shadow: 1px 2px 7px grey;
+}
+
+.checkout__form label {
+    float: left;
+    margin: 2px 0;
+}
+
+
+.checkout__form span {
+    color: crimson;
+}
+
+.checkout__form input {
+    margin: 3px 0;
+    outline-color: #ed017f;
+    padding: 7px;
+    font-size: 15px;
+    height: 20px;
+    width: 95%;
+    
+}
+
+.checkout__form > button {
+    margin: 15px 0;
+    border: none;
+    padding: 10px 30px;
+    background-color: crimson;
+    color: white;
+    border-radius: 3px;
+}

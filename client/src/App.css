@@ -1,0 +1,286 @@
+.App {
+  text-align: center;
+}
+
+
+
+ul {
+  list-style: none;
+}
+
+.navbar li {
+  display: inline-block;
+  margin: 0 30px;
+}
+
+
+.navbar__navigation li {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.products__divider {
+  border-top: solid 1px silver;
+  margin: 7px 0;
+}
+
+/* ================================ FOR MOBILE VIEW ================================= */
+
+@media(max-width: 500px) {
+  div .header__search-mobile {
+    display: block;
+  }
+
+  .header {
+    display: none;
+  }
+
+  div .mobile__header {
+    display: block;
+    width: 100%;
+  }
+
+  .mobile__menu-btn {
+    float: left;
+    margin: 5px;
+  }
+
+  .menu {
+    margin: 10px;
+    margin-right: -5px;
+    cursor: pointer;
+    display: block;
+  }
+
+  .menu > i {
+    display: block;
+    background-color: black;
+    width: 20px;
+    height: 3px;
+    margin: 2px 0;
+  }
+
+  /* ===Menu Button Animation=== */
+  div #down {
+    transition: all .5s;
+  }
+  .activate-down {
+    transform: rotate(45deg) translate(3px, 4px);
+  }
+
+  div #away {
+    transition: all .5s ease;
+  }
+  .acitvate-away {
+    opacity: 0;
+  }
+
+  div #up {
+    transition: all .5s;
+  }
+  .activate-up {
+    transform: rotate(-45deg) translate(3px, -4px);
+  }
+
+
+  .mobile__logo {
+    margin: 12px;
+    float: left;
+  }
+
+  .mobile__logo > img {
+    width: 85px;
+  }
+
+  div .mobile__sidebar {
+    background-color: rgb(247, 246, 246);
+    height: 100vh;
+    width: 380px;
+
+    position: fixed;
+    left: -500px;
+    top: 40px;
+    z-index: 10;
+    transition: all .5s ease;
+  }
+
+  .active {
+    left: 0!important;
+  }
+  
+  div .cart__container-mobile {
+    float: right
+  }
+
+  .cart__greenbox-hide {
+    display: none;
+  }
+
+ div #cart__mobile {
+   margin: 9px;
+    background: white;
+    color: black;
+    font-size: 13px;
+
+    display: flex;
+  }
+
+  div.cart__mobile-logo {
+    margin: 10px 0;
+  }
+
+  #cart__number {
+    background: #33b27b;
+    height: fit-content;
+    color: white;
+    padding: 0 4px 1px 4px;
+    font-size: 12px;
+    transform: translate(-7px, 2px);
+    border-radius: 150px;
+  }
+
+  .mobile__search{
+    width: auto;
+  }
+  .mobile__search >input {
+    width: 95%;
+    height: 12px;
+    padding: 20px;
+    outline: none;
+    border: none;
+    background-color: rgb(225, 225, 225);
+    border-radius: 3px;
+    margin: 7px 0;
+  }
+
+  .mobile__action-btn {
+    display: flex;
+    justify-content: space-around;
+    margin: 7px;
+  }
+
+  .mobile__action-btn > button {
+    width: 160px;
+    padding: 13px;
+    border: solid 1px #ed017f;
+    outline: none;
+    color: #ed017f;
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: white;
+  }
+
+  .mobile__navigation > ul > li {
+    border-top: solid 1px silver;
+    padding: 17px 6px;
+  }
+
+  .mobile > table {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .mobile > table > tbody > tr > td {
+    background-color: white;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 30px;
+    width: 200px;
+    height: 65px;
+  }
+
+  /* Items insid of the Table */
+  .mobile__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile__links > div {
+    color: black;
+    font-size: 13px;
+  }
+
+  .mobile__links > span {
+    color: grey;
+    font-size: 11px;
+  }
+  
+  div .mobile__navigation, div .mobile__navigation > ul {
+    text-align: left;
+    height: 100%;
+  }
+
+
+  /* ====== cart Component for mobile. Styling!....========= */
+    div.products__left {
+      display: none;
+    }
+
+    div.cart__header {
+        font-size: 10px;
+    }
+
+  div.cart__items-details {
+    width: 100%;
+    background-color: white;
+  }
+
+
+  div.cart__quantity-amount {
+    width: 100%;
+    padding-left: 30px;
+  }
+
+  div.cart__amount {
+ /*    border: solid green */
+  }
+
+  div.cart__action {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  div.cart__action > span {
+    display: none;
+  }
+
+  div.cart__action > p {
+    border: solid silver 1px;
+    padding: 8px 55px;
+    font-size: 11px;
+    color: black;
+  }
+
+  div.cart__total-component {
+    border-radius: 2px;
+    padding-left: auto;
+    padding-right: auto;
+    padding: 10px 0;
+    box-sizing: border-box;
+    margin-bottom : 12px;
+  }
+
+  div.cart__back {
+    background-color: #f1eeee;;
+}
+
+  #cart__cartlist-container {
+    flex-direction: column;
+}
+
+
+
+
+
+
+}

@@ -2,12 +2,15 @@ import React, { useReducer, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
-import CheckOut from "./components/CheckOut";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import Payment from './components/Payment'
 import Contact from "./components/Contact";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import { reducer, initState } from "./reducer/contextReducer";
 import { cartReducer, initCart } from "./reducer/cartReducer";
+import Footer from "./components/Footer";
 
 export const stateContext = React.createContext();
 
@@ -34,10 +37,13 @@ function App() {
             <Route exact path="/">
               <Products />
             </Route>
-            <Route path="/checkout" component={CheckOut} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/payment" component={Payment} />
+            <Route path="/checkout" component={Checkout} />
             <Route path="/contact" component={Contact} />
             <Route path="/:user_id" component={PrivateRoute} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     </stateContext.Provider>

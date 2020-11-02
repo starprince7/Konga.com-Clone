@@ -1,6 +1,7 @@
  
 
 export const initState = {
+  orderId: null,
   products: [
     { id: 1, rating: 5, title: "Galaxy Tab A3 Core", img: "picture", price: 20000, discount: '20%', quantity: 0 },
     { id: 2, rating: 3, title: "Samsung A1", img: "picture", price: 45000, discount: '5%',  quantity: 0 },
@@ -12,7 +13,10 @@ export const initState = {
   ],
 };
 export const reducer = (state, action) => {
+  console.log('From context Reducer',action)
   switch (action.type) {
+    case 'SET_ORDER_ID':
+      return { ...state, orderId: action.payload }
     
     default:
       return state;
