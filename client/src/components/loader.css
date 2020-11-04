@@ -1,0 +1,47 @@
+
+/* Loader Styles Here! */
+
+.background-loader {
+    width: 350px;
+    height: 230px;
+    padding: 20px;
+    background: #33b27b;
+    border-radius: 2px;
+    box-shadow: 4px 3px 6px grey;
+    z-index: 100;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    padding: 40px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#loader > img {
+    width: 80%;
+    margin-top: 50px;
+}
+
+#loader {
+    margin: auto;
+    width: 160px;
+    height: 50px;
+/*             border: 1solid 10px grey; */
+   
+    border-radius: 50%;
+    animation: spin 1.49s ease infinite;
+}
+@keyframes spin {
+    0% {transform: translateX(-240px);}
+    50% {transform: translateX(0px);}
+    100% {transform: translateX(300px);}
+}
+
+.loader__caption {
+    color: rgb(219, 218, 218);
+    position: relative;
+    bottom: -105px;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: .5;
+}

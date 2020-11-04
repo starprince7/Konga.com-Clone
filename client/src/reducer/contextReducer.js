@@ -2,6 +2,7 @@
 
 export const initState = {
   orderId: null,
+  loading: false,
   products: [
     { id: 1, rating: 5, title: "Galaxy Tab A3 Core", img: "picture", price: 20000, discount: '20%', quantity: 0 },
     { id: 2, rating: 3, title: "Samsung A1", img: "picture", price: 45000, discount: '5%',  quantity: 0 },
@@ -17,6 +18,8 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_ORDER_ID':
       return { ...state, orderId: action.payload }
+    case 'SET_LOADING':
+      return {...state, loading: action.payload}
     
     default:
       return state;

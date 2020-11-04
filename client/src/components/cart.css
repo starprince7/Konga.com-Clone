@@ -41,6 +41,11 @@
 @media(max-width: 500px) {
     .cart__cart-empty-message  {
         box-shadow: none;
+        width: 300px;
+        position: relative;
+        margin: auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 }
 
@@ -187,3 +192,7 @@ span > p > strong, .qty {
     color:dimgray;
     font-size: small;
 }
+
+
+
+

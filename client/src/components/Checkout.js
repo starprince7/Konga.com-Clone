@@ -4,7 +4,7 @@ import { stateContext } from "../App";
 import "./checkout.css";
 
 function CheckOut(props) {
-  const { state } = useContext(stateContext);
+  const { state, dispatch } = useContext(stateContext);
   const { orderId } = state;
 
   const [email, setEmail] = useState("");
@@ -15,6 +15,10 @@ function CheckOut(props) {
 
   const handleFormSubmission = async (e) => {
     e.preventDefault();
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true
+    })
     console.log({ email, name, address, phone });
     const res = await Axios.post("http://localhost:5000/customer-info", {
       orderId,
@@ -24,7 +28,13 @@ function CheckOut(props) {
       address,
       phone,
     });
-    res && props.history.push("/payment");
+      if(res) {
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
+        })
+        props.history.push("/payment")
+    }
   };
 
   return (
@@ -55,7 +65,7 @@ function CheckOut(props) {
           />
         </div>
         <br></br>
-        <label>Address<span>*</span></label>
+        <label>Delivery Address<span>*</span></label>
         <div>
           <input
             type="text"
@@ -66,7 +76,7 @@ function CheckOut(props) {
           />
         </div>
         <br></br>
-        <label>City / State<span>*</span></label>
+        <label>State / City<span>*</span></label>
         <div>
           <input
             type="text"
@@ -90,11 +100,6 @@ function CheckOut(props) {
         <br></br>
         <button>Submit</button>
         <br></br>
-        <p>Email: {email}</p>
-        <p>Name: {name}</p>
-        <p>City: {city}</p>
-        <p>Address: {address}</p>
-        <p>Phone: {phone}</p>
       </form>
     </div>
   );

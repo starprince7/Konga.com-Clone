@@ -35,6 +35,13 @@ a {
 /* ================================ FOR MOBILE VIEW ================================= */
 
 @media(max-width: 500px) {
+  /* Loader For Mobile Styles */
+  div.background-loader {
+    top: 25vh;
+    left: 15vw;
+    width: 70vw;
+  }
+
   div .header__search-mobile {
     display: block;
   }
@@ -44,6 +51,10 @@ a {
   }
 
   div .mobile__header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
     display: block;
     width: 100%;
   }
@@ -117,7 +128,11 @@ a {
   }
   
   div .cart__container-mobile {
-    float: right
+    float: right;
+    min-width: 85px;
+    right: 18px;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 
   .cart__greenbox-hide {

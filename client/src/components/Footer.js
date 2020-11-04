@@ -190,7 +190,7 @@ function Footer() {
         <div className="footer__divider"></div>
         <div className="copy-right">
           <span>
-            Developed By : Prince Agezi .N. - Copyright &copy; 2020 konga.com All
+            Designed And developed By Prince Agezi .N. - Copyright &copy; 2020 konga.com All
             rights reserved
           </span>
         </div>

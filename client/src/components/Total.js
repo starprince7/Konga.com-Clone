@@ -23,6 +23,10 @@ const Total = (props) => {
 
 
   const handleSubmit = async () => {
+    dispatch({
+      type: 'SET_LOADING',
+      payload: true
+    })
     console.log(cart, subTotal)
     try {
       const res = await Axios.post("http://localhost:5000/order", { subTotal, cart });
@@ -32,6 +36,10 @@ const Total = (props) => {
         dispatch({
           type: 'SET_ORDER_ID',
           payload: data._id
+        })
+        dispatch({
+          type: 'SET_LOADING',
+          payload: false
         })
         props.history.push("/checkout");
       }

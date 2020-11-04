@@ -3,14 +3,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Transcation = require("./model/transcationSchema");
-const { default: Axios } = require("axios");
+const Axios = require("axios")
 const https = require('https');
 
 
 const app = express();
 
 //Middlewares
-app.use(express.urlencoded());
 app.use(express.json());
 app.use(cors());
 
@@ -88,27 +87,28 @@ app.post("/payment", async (req, res) => {
 });
 
 // Route To verify Paystack Transcation 
-app.get('/verify-transcation/:ref', (req, res) => {
+app.get('/verify-transcation/:ref', async (req, res) => {
   console.log('Request To Verify Paystack Payment Came  In....')
   const ref = req.params.ref
   console.log('Ref: ',ref)
- /*  const options = {
-    headers: {
-      Authorization: 'sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9'
-    }
-  } */
+
 
   const options = {
-    hostname: 'api.paystack.co',
-    port: 443,
-    path: `/transaction/verify/${ref}`,
-    method: 'GET',
     headers: {
-      Authorization: 'sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9'
+      Authorization: process.env.PAYSTACK_SECRET_KEY
     }
   }
 
-  https.request(options, response => {
+  try { 
+    const res = await Axios.get(`http://api.paystack.co/transaction/verify/${ref}`, options)
+    res && console.log('SUCCESS! in verifying Payment...', res)
+    res && res.status(200).send(res)
+  }
+  catch (error) {
+    console.error('Error In Verifying Paystack Payment',error)
+  }
+
+  /* https.request(options, response => {
     let data = ''
 
     response.on('data', (chunk) => {
@@ -122,5 +122,5 @@ app.get('/verify-transcation/:ref', (req, res) => {
 
   }).on('error', error => {
     console.error('Error In Verifying Paystack Payment',error)
-  })
+  }) */
 })

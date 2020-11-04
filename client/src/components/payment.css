@@ -1,7 +1,7 @@
 
 .payment__container {
-    min-height: 450px;
-    width: 350px;
+    min-height: 500px;
+    width: 400px;
     border-radius: 4px;
     padding: 30px;
     box-sizing: border-box;
@@ -17,6 +17,27 @@
 .payment__back {
     padding: 50px 0;
     background-color: rgb(247, 246, 246);
+}
+
+.payment__info {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    color: rgb(29, 29, 29);
+}
+
+.payment__info i {
+    font-size: 12.2px;
+    font-weight: bolder;
+}
+
+.payment__blue {
+    color: #94004F;
+    font-weight: 600;
+}
+
+.payment-address {
+    text-align: right;
 }
 
 .payment__paystack-container button {
