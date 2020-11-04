@@ -1,3 +1,20 @@
+.loader__dark-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(10, 10, 10, 0.3);
+    height: 100vh;
+    width: 100%;
+    z-index: 110;
+
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    opacity: 0;
+    transition: all 1s ease-in;
+    cursor: wait;
+}
+
 
 /* Loader Styles Here! */
 
@@ -8,7 +25,7 @@
     background: #33b27b;
     border-radius: 2px;
     box-shadow: 4px 3px 6px grey;
-    z-index: 100;
+    z-index: 120;
     position: fixed;
     top: 30%;
     left: 40%;
@@ -29,7 +46,7 @@
 /*             border: 1solid 10px grey; */
    
     border-radius: 50%;
-    animation: spin 1.49s ease infinite;
+    animation: spin 1.46s ease infinite;
 }
 @keyframes spin {
     0% {transform: translateX(-240px);}
@@ -38,7 +55,7 @@
 }
 
 .loader__caption {
-    color: rgb(219, 218, 218);
+    color: white;
     position: relative;
     bottom: -105px;
     font-size: 12px;

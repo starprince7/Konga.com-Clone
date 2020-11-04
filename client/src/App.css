@@ -41,6 +41,9 @@ a {
     left: 15vw;
     width: 70vw;
   }
+  div.background-loader > span {
+        font-size: 10px;
+  }
 
   div .header__search-mobile {
     display: block;
