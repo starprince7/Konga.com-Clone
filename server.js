@@ -27,7 +27,7 @@ mongoose
   })
   .then((result) => {
     console.log("Connected to the Database!...");
-    app.listen(5000, "0.0.0.0", () => {
+    app.listen(port, "0.0.0.0", () => {
       console.log(`Server is live on port ${port}`);
     });
   })
