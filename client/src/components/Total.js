@@ -29,7 +29,7 @@ const Total = (props) => {
     })
     console.log(cart, subTotal)
     try {
-      const res = await Axios.post("http://localhost:5000/order", { subTotal, cart });
+      const res = await Axios.post("/order", { subTotal, cart });
       const data = res.data
       if (data) {
         console.log('from total comp', data)

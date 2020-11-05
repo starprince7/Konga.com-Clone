@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const Transcation = require("./model/transcationSchema");
 const Axios = require("axios")
 const https = require('https');
@@ -11,14 +10,13 @@ const app = express();
 
 //Middlewares
 app.use(express.json());
-app.use(cors());
 
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // db connection
 const dbURI =
-  `mongodb+srv://starprince:${process.env.PASSWORD_DB}@starprince.m9v4i.mongodb.net/Data-ecommerce`;
+  `mongodb+srv://starprince:starprince7@starprince.m9v4i.mongodb.net/Data-ecommerce`;
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
@@ -37,10 +35,16 @@ mongoose
     console.log(err);
   });
 
-app.get("/", (req, res) => {
-  console.log("req just came in ");
-  res.send("HELLO WORLD");
-});
+// Serving Static files to the Client
+if (process.env.NODE_ENV === 'production') {
+  // Make the Client files Public
+  app.use(express.static('client/build'))
+
+  app.get("*", (req, res) => {
+    console.log("req just came in to load up React client/Build files ");
+    res.sendFile("./client/build/index.html", {root: __dirname});
+  });
+}
 
 // Order Post request!
 app.post("/order", async (req, res) => {
@@ -92,23 +96,29 @@ app.get('/verify-transcation/:ref', async (req, res) => {
   const ref = req.params.ref
   console.log('Ref: ',ref)
 
-
   const options = {
     headers: {
-      Authorization: process.env.PAYSTACK_SECRET_KEY
+      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`
     }
   }
 
+
   try { 
-    const res = await Axios.get(`http://api.paystack.co/transaction/verify/${ref}`, options)
-    res && console.log('SUCCESS! in verifying Payment...', res)
+    const res = await Axios.get(`https://api.paystack.co/transaction/verify/${ref}`, options)
+    res && console.log('SUCCESS! in verifying Payment...', res.data.data)
     res && res.status(200).send(res)
   }
   catch (error) {
     console.error('Error In Verifying Paystack Payment',error)
   }
 
-  /* https.request(options, response => {
+
+
+
+
+  // HTTPS METHOD FOR A GET REQUEST DID NOT WORK!
+
+ /*  https.request(options, response => {
     let data = ''
 
     response.on('data', (chunk) => {

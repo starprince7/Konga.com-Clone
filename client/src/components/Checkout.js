@@ -20,7 +20,7 @@ function CheckOut(props) {
       payload: true
     })
     console.log({ email, name, address, phone });
-    const res = await Axios.post("http://localhost:5000/customer-info", {
+    const res = await Axios.post("/customer-info", {
       orderId,
       email,
       name,

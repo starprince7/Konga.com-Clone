@@ -15,7 +15,7 @@ function Payment(props) {
   useEffect(() => {
     console.log("USE EFFECT CALLED!.....");
 
-    Axios.post("http://localhost:5000/payment", { id: orderId })
+    Axios.post("/payment", { id: orderId })
       .then((res) => {
         const data = res.data;
         console.log("the Res.Data...", data);
@@ -40,13 +40,13 @@ function Payment(props) {
   const handlePaystackSuccessAction = (ref) => {
     // Implementation for whatever you want to do with reference and after success call.
 
-    Axios.get(`http://localhost:5000/verify-transcation/${ref.reference}`)
-      .then((res) => console.log("Success in verfiying Transcation", res))
+    Axios.get(`/verify-transcation/${ref.reference}`)
+      .then((res) => {
+        console.log("Success in verfiying Transcation", res);
+        localStorage.removeItem("cart");
+        props.history.push("/");
+      })
       .catch((error) => console.log(error));
-    console.log(ref);
-    console.log(ref.reference);
-    localStorage.removeItem('cart')
-    props.history.push("/");
   };
 
   // you can call this function anything
@@ -67,26 +67,42 @@ function Payment(props) {
       <div className="payment__container">
         <h3>Order Details</h3>
         <div className="payment__info">
-          <p>Order for:</p> <p className="payment__blue"><u>{order.email},</u></p>
+          <p>Order for:</p>{" "}
+          <p className="payment__blue">
+            <u>{order.email},</u>
+          </p>
         </div>
         <div className="payment__info">
           <p>Your Order Refrence:</p>
-          <p><strong>
-            <i>{order._id + new Date().getTime()}</i>
-          </strong></p>
+          <p>
+            <strong>
+              <i>{order._id + new Date().getTime()}</i>
+            </strong>
+          </p>
         </div>
         <div className="payment__info">
           <p>Amount to be Paid:</p>
-          <p><strong><Naira>{order.amount ? order.amount : 0}</Naira></strong></p>
+          <p>
+            <strong>
+              <Naira>{order.amount ? order.amount : 0}</Naira>
+            </strong>
+          </p>
         </div>
         <div className="payment__info">
-        <p>Order Address:</p> <p className="payment-address">{order.address}</p>
+          <p>Order Address:</p>{" "}
+          <p className="payment-address">{order.address}</p>
         </div>
         <div className="payment__info">
-          <p>State / City:</p> <p><strong>{order.city}</strong></p>
+          <p>State / City:</p>{" "}
+          <p>
+            <strong>{order.city}</strong>
+          </p>
         </div>
         <div className="payment__info">
-          <p>PHONE NO.: </p> <p><strong>{order.phone}</strong></p>
+          <p>PHONE NO.: </p>{" "}
+          <p>
+            <strong>{order.phone}</strong>
+          </p>
         </div>
       </div>
       <div className="payment__paystack-container">
