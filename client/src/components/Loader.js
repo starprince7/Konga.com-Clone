@@ -27,7 +27,7 @@ function Loader() {
   return (
     <div className="loader__dark-background">
       {/* Loader Below Here! */}
-      <div class="background-loader">
+      <div className="background-loader">
         <div id="loader">
           <img src={KongaLoader} alt="konga loader" />
         </div>
