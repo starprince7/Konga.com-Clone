@@ -6,8 +6,8 @@ import Naira from "react-naira";
 import "./payment.css";
 
 function Payment(props) {
-  const myStateContext = useContext(stateContext);
-  const { orderId } = myStateContext.state;
+  const {state, cartDispatch} = useContext(stateContext);
+  const { orderId } = state;
 
   const [order, setOrder] = useState({});
   const { cart } = order;
@@ -25,7 +25,7 @@ function Payment(props) {
   }, []);
 
   const config = {
-    reference: order._id + new Date().getTime(),
+    reference: order._id,
     email: order.email,
     amount: order.amount * 100,
     metadata: {
@@ -43,7 +43,7 @@ function Payment(props) {
     Axios.get(`/verify-transcation/${ref.reference}`)
       .then((res) => {
         console.log("Success in verfiying Transcation", res);
-        localStorage.removeItem("cart");
+        cartDispatch({type: "CLEAR_CART"})
         props.history.push("/");
       })
       .catch((error) => console.log(error));
@@ -76,7 +76,7 @@ function Payment(props) {
           <p>Your Order Refrence:</p>
           <p>
             <strong>
-              <i>{order._id + new Date().getTime()}</i>
+              <i>{order._id}</i>
             </strong>
           </p>
         </div>

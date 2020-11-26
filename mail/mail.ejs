@@ -1,0 +1,170 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mail.css">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        
+        *{
+            font-family: 'Montserrat', sans-serif;
+    }
+
+
+.heading {
+    width: fit-content;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: crimson;
+}
+
+.container {
+    max-width: 70%;
+    margin: auto;
+    padding: 30px;
+    font-size: 1.5rem;
+}
+@media(max-width: 700px) {
+    .container{max-width: 85%}
+}
+@media(max-width: 500px) {
+    .container{max-width: 100%}
+}
+
+
+p.greetings {
+    font-size: 17px;;
+}
+
+
+.left {
+    text-transform: capitalize;
+    width: fit-content;
+    font-size: 15px;
+}
+
+
+
+h4 {
+    color: crimson;
+    margin-left: 0px;
+}
+
+
+
+.item__detail {
+    border: solid 1px rgb(228, 228, 228);
+    background-color: rgb(248, 248, 248);
+    height: auto;
+    padding: 30px 0px;
+    border-radius: 5px;
+    font-size: 15px;
+}@media(max-width: 500px) {
+    .item__detail {
+       width: 100%; 
+    }
+}
+
+.item__detail > ul {
+    list-style: none;
+    width: 400px;
+}
+
+
+
+.item__detail > ul > li {
+    position: relative;
+    left: -3;
+    padding: 15px 6px;
+    border-radius: 2px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}@media(max-width: 500px) {
+    .item__detail > ul > li {
+       width: inherit; 
+    }
+}
+
+.item__detail > ul > li > div {
+    width: 100%;
+}
+
+.quantity {
+    font-size: 12px;
+}
+
+
+.price {
+    text-align: right;
+    font-size: 14px;
+}
+
+.item {
+    text-align: left;
+    font-size: 13px;
+}
+
+
+.total__price {
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+span {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.company__name {
+    font-size: 14px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            Order Details!
+        </div>
+    </div>
+    <div class="container">
+        <p class="left">
+            hello <%= order.name %>,
+        </p>
+        <p class="greetings">
+            Thank you for shopping on the "Konga Clone" your order <%= order._id %> has been successfully confirmed.
+        </p>
+        <div class="item__detail">
+            <p><strong>You order for:</strong></p>
+            <br>
+            <br>
+            <ul>
+                <% order.cart.forEach(({title, price, quantity}) => {%>
+                    <li>
+                        <div class="item"><%= title %></div>
+                        <div class="quantity"><%= quantity %></div>
+                        <div class="price">NGN<%= price %></div>
+                    </li>
+                <% }) %>
+                <br>
+                <br>
+                <div class="total__price">
+                    <strong>Total: </strong>NGN<%= order.amount %>
+                </div>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <br>
+        <span>with warm regards from!...</span>
+        <p class="company__name">Prince.</p>
+    </div>
+</body>
+</html>

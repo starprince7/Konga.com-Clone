@@ -20,7 +20,7 @@ function CheckOut(props) {
       payload: true
     })
     console.log({ email, name, address, phone });
-    const res = await Axios.post("/customer-info", {
+    const res = await Axios.put("/customer-info", {
       orderId,
       email,
       name,

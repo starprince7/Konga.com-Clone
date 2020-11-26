@@ -20,7 +20,7 @@ function App() {
 
   const [cartState, cartDispatch] = useReducer(cartReducer, initCart, () => {
     const cartLocalStorage = localStorage.getItem("cart");
-    return cartLocalStorage ? JSON.parse(cartLocalStorage) : initCart;
+    return cartLocalStorage ? JSON.parse(cartLocalStorage) : initCart; /* If there are no Items in cart Return/read from initial Cart*/
   });
 
   const cart = cartState;
