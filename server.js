@@ -107,8 +107,8 @@ app.get("/verify-transcation/:ref", async (req, res) => {
 
   const auth = {
     auth: {
-      api_key: "05de05c7aa84acab9a4c8b665692517c-2af183ba-41c8acf9",
-      domain: "sandbox0fea1f853ea44ca199a270a246db3d42.mailgun.org",
+      api_key: "",
+      domain: "",
     },
   };
 
