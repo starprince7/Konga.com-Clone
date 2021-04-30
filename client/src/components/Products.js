@@ -53,7 +53,7 @@ function Products() {
             type: "SET_LOADING",
             payload: false,
           });
-          console.table("Result from the get Request", response.data);
+          // console.table("Result from the get Request", response.data);
         }
        } catch (error) {
         console.log(":cannot GET PRODUTS ERR!", error)
@@ -94,8 +94,8 @@ function Products() {
                   <div className="products__star">
                     {Array(rating)
                       .fill()
-                      .map((_) => (
-                        <span>⭐</span>
+                      .map((_, index) => (
+                        <span key={index}>⭐</span>
                       ))}
                   </div>
                   <div className="products__divider"></div>

@@ -15,7 +15,7 @@ export const initState = {
   ],
 };
 export const reducer = (state, action) => {
-  console.log('From context Reducer',action)
+  // console.log('From context Reducer',action)
   switch (action.type) {
     case 'SET_ORDER_ID':
       return { ...state, orderId: action.payload }
