@@ -170,16 +170,16 @@ function Footer() {
               <div className="social">
                 <h4> CONNECT WITH US</h4>
                 <div className="social__links">
-                  <a href="#">
+                  <a href="www.facebook.com">
                     <img src={logoFacebook} alt="facebook" />
                   </a>
-                  <a href="#">
+                  <a href="www.twitter.com">
                     <img src={logoTwitter} alt="twitter" />
                   </a>
-                  <a href="#">
+                  <a href="www.instagram.com">
                     <img src={logoInstagram} alt="instagram" />
                   </a>
-                  <a href="#">
+                  <a href="www.youtube.com">
                     <img src={logoYoutube} alt="youtube" />
                   </a>
                 </div>

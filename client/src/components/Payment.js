@@ -10,7 +10,7 @@ function Payment(props) {
   const { orderId } = state;
 
   const [order, setOrder] = useState({});
-  const { cart } = order;
+  // const { cart } = order;
 
   useEffect(() => {
     console.log("USE EFFECT CALLED!.....");
@@ -22,7 +22,7 @@ function Payment(props) {
         setOrder(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [orderId]);
 
   const config = {
     reference: order._id,

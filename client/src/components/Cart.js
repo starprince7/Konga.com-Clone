@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { stateContext } from "../App";
 import SumTotal from "./SumTotal";
-import productImage from "../img/product2.jpg";
-import CurrencyFormat from "react-currency-format";
+// import productImage from "../img/product2.jpg";
+// import CurrencyFormat from "react-currency-format";
 import Naira from "react-naira";
 import "./cart.css";
 import Total from "./Total";
 
 function Cart() {
-  const { state, cartState, cartDispatch } = React.useContext(stateContext);
+  const { cartState, cartDispatch } = React.useContext(stateContext);
   const cart = cartState;
 
   const removeItem = (id) => {
