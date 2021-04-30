@@ -37,10 +37,10 @@ mongoose
     console.log(err);
   });
 
-  app.get("*", (req, res) => {
-    console.log("req just came in to load up React client/Build files ");
-    res.sendFile("./client/build/index.html", { root: __dirname });
-  });
+  // app.get("*", (req, res) => {
+  //   console.log("req just came in to load up React client/Build files ");
+  //   res.sendFile("./client/build/index.html", { root: __dirname });
+  // });
 
 // Serving Static files to the Client
 if (process.env.NODE_ENV === "production") {
