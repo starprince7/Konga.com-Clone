@@ -1,5 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import "./App.css";
+
+import Login from './components/Login'
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
@@ -39,6 +41,7 @@ function App() {
             <Route exact path="/">
               <Products />
             </Route>
+            <Route path="/login" component={Login} />
             <Route path="/cart" component={Cart} />
             <Route path="/payment" component={Payment} />
             <Route path="/checkout" component={Checkout} />

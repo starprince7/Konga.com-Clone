@@ -2,16 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(10, 10, 10, 0.3);
+    background-color: rgba(10, 10, 10, 0.8);
     height: 100vh;
     width: 100%;
-    z-index: 110;
+    z-index: 410;
 
     position: fixed;
     top: 0%;
     left: 0%;
     opacity: 0;
-    transition: all 1s ease-in;
+    transition: all .8s ease;
     cursor: wait;
 }
 
@@ -24,7 +24,7 @@
     padding: 20px;
     background: #33b27b;
     border-radius: 2px;
-    box-shadow: 4px 3px 6px grey;
+    /* box-shadow: 4px 3px 6px grey; */
     z-index: 120;
     position: fixed;
     top: 30%;

@@ -1,0 +1,11 @@
+form {
+    max-width: 400px;
+    height: 400px;
+    padding: 10px;
+    border: solid 2px silver;
+    margin: 50px auto;
+}
+
+input {
+
+}

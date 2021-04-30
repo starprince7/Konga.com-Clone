@@ -144,7 +144,9 @@
 }
 
 .cart__image-title > img {
-    width: 40%;
+    /* border: solid red; */
+    width: 13%;
+    margin: 10px;
     height: auto;
     object-fit: contain;
     margin-right: 10px;

@@ -38,6 +38,19 @@ export const decreamentQty = (cart, ID) => {
   return newArray;
 };
 
+
+
+export const ref_products = array => {
+  const newA = [...array]
+  const refined = newA.map(function (arr) {
+    return {...arr, price: arr.price * 400 }
+  })
+
+  return refined
+}
+
+
+
 /* ========================================================================================================= */
 
 /* const addItemToCart = (cartItems, cartItemToAdd) => {

@@ -71,7 +71,7 @@ function Navbar(props) {
             </li>
             <li>
               <div className="navbar__links login">
-                <Link to="/contact">
+                <Link to="/login">
                   <div>Login /</div>
                   <div>Signup</div>
                 </Link>

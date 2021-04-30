@@ -35,12 +35,12 @@ function Cart() {
 
   
 
-  const cartList = cart.map(({ id, title, img, price, quantity }) => {
+  const cartList = cart.map(({ id, title, image, price, quantity }) => {
     return (
       <div className="cart__row" key={id}>
         <div className="cart__items-details">
           <div className="cart__image-title">
-            <img src={productImage} alt="cart-item" />
+            <img src={image} alt="cart-item" />
             <span>
               {" "}
               <h3>{title}</h3>
