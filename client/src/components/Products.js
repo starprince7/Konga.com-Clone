@@ -44,7 +44,7 @@ function Products() {
         type: "SET_LOADING",
         payload: false,
       });
-      alert("ERR! Could not fetch Products, please try again!")
+      alert("ERR! Could not fetch Products at this time, please try again!")
     });
 
     // async function getProducts() {
