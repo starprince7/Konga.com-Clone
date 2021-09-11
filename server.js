@@ -237,3 +237,245 @@ app.get("/verify-transcation/:ref", async (req, res) => {
     console.error("Error In Verifying Paystack Payment", error);
   }
 });
+
+
+
+const getBanks = async () => {
+  console.log("Getting Banks...")
+
+  const options = {
+    headers: {
+      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`,
+    },
+  };
+
+  try {
+    const res = await Axios.get("https://api.paystack.co/bank", options)
+    res && console.log("Response of Banks from Paystack --->", res.data)
+  } catch (e) {
+    console.log("Err! getting banks", e.message)
+  }
+}
+
+const makeTransfer = async () => {
+  // console.log("Making a single transfer...")
+  console.log("Making a single transfer (POST)...")
+
+ /*  const params = JSON.stringify({
+    "type":"nuban",
+    "name" : 'Prince Agezichukwu Nweke',
+    "account_number": "2009062964",
+    "bank_code": "50211",
+    "currency": "NGN"
+  }) */
+
+  const params = JSON.stringify({
+    "source": "balance",
+    "amount": 1000000,
+    "account_number": "2009062964",
+    "bank_code": "50211",
+    "reason": "Holiday Flexing"
+  })
+
+  const options = {
+    body: params,
+    headers: {
+      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`,
+      'Content-Type': 'application/json'
+    },
+  };
+
+  const kuda_acct_no = "2009062964"
+  const kuda_bnk_code = "50211"
+  const url = `https://api.paystack.co/bank/resolve?account_number=${kuda_acct_no}&bank_code=${kuda_bnk_code}`
+  const url2 = "https://api.paystack.co/transferrecipient"
+  const url3 = "https://api.paystack.co/transfer"
+  try {
+    const res = await Axios.post(url3, options)
+    res && console.log("Response of Bank Account from Paystack --->", res.data)
+    res && console.log("Response of Bank Account from Paystack --->", res.data.recipient_code)
+  } catch (e) {
+    console.log("Err! making bank transfer.", e.message)
+  }
+}
+
+const transferFund = () => {
+  console.log("Transfering fund...")
+
+  const https = require('https')
+   const params = JSON.stringify({
+    "type":"nuban",
+    "name" : 'Prince Agezichukwu Nweke',
+    "account_number": "2009062964",
+    "bank_code": "50211",
+    "currency": "NGN"
+  })
+  const options = {
+    hostname: 'api.paystack.co',
+    port: 443,
+    path: '/transferrecipient',
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`,
+      'Content-Type': 'application/json'
+    }
+  }
+  const req = https.request(options, res => {
+    let data = ''
+    res.on('data', (chunk) => {
+      data += chunk
+    });
+    res.on('end', () => {
+      console.log("Data gotten from paystack ===->", JSON.parse(data))
+    })
+  }).on('error', error => {
+    console.error(error)
+  })
+  req.write(params)
+  req.end()
+}
+
+const transferFundSending = () => {
+  console.log("Transfering... Scary!")
+  
+  const https = require('https')
+  const params = JSON.stringify({
+    "source": "balance",
+    "amount": 3794800,
+    "recipient": "RCP_0h5kg71lx16t9vo",
+    "reason": "Holiday Flexing"
+  })
+  const options = {
+    hostname: 'api.paystack.co',
+    port: 443,
+    path: '/transfer',
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`,
+      'Content-Type': 'application/json'
+    }
+  }
+  const req = https.request(options, res => {
+    let data = ''
+    res.on('data', (chunk) => {
+      data += chunk
+    });
+    res.on('end', () => {
+      console.log("Success! funds transferd.", JSON.parse(data))
+    })
+  }).on('error', error => {
+    console.error(error)
+  })
+  req.write(params)
+  req.end()
+}
+
+const getBalance = async () => {
+  console.log("Getting Balance...")
+
+  const https = require('https')
+  const options = {
+    hostname: 'api.paystack.co',
+    port: 443,
+    path: '/balance',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9'
+    }
+  }
+
+  try {
+    const res = await Axios.get("https://api.paystack.co/balance", options)
+    console.log("Paystack Balance gotten", res.data)
+  }
+  catch (e) {
+    console.log("ERR! Getting Balance", e)
+  }
+
+}
+
+// getBanks()
+// makeTransfer()
+// transferFund()
+// transferFundSending()
+getBalance()
+
+/*
+Data gotten from paystack ===-> {                       
+  status: true,                                         
+  message: 'Transfer recipient created successfully',   
+  data: {                                               
+    active: true,                                       
+    createdAt: '2021-09-10T21:30:15.320Z',              
+    currency: 'NGN',                                    
+    domain: 'test',                                     
+    id: 18050238,                                       
+    integration: 526220,                                
+    name: 'Prince Agezichukwu Nweke',                   
+    recipient_code: 'RCP_0h5kg71lx16t9vo',              
+    type: 'nuban',                                      
+    updatedAt: '2021-09-10T21:30:15.320Z',              
+    is_deleted: false,                                  
+    details: {                                          
+      authorization_code: null,                         
+      account_number: '2009062964',                     
+      account_name: 'Prince Agezichukwu Nweke',         
+      bank_code: '50211',                               
+      bank_name: 'Kuda Bank'                            
+    }                                                   
+  }                                                     
+}                                                       
+*/
+
+/* {
+  name: 'Zenith Bank',
+  slug: 'zenith-bank',
+  code: '057',
+  longcode: '057150013',
+  gateway: 'emandate',
+  pay_with_bank: true,
+  active: true,
+  is_deleted: null,
+  country: 'Nigeria',
+  currency: 'NGN',
+  type: 'nuban',
+  id: 21,
+  createdAt: '2016-07-14T10:04:29.000Z',
+  updatedAt: '2021-06-01T11:01:30.000Z'
+} */
+
+/* {                                       
+  name: 'United Bank For Africa',       
+  slug: 'united-bank-for-africa',       
+  code: '033',                          
+  longcode: '033153513',                
+  gateway: 'emandate',                  
+  pay_with_bank: true,                  
+  active: true,                         
+  is_deleted: null,                     
+  country: 'Nigeria',                   
+  currency: 'NGN',                      
+  type: 'nuban',                        
+  id: 18,                               
+  createdAt: '2016-07-14T10:04:29.000Z',
+  updatedAt: '2021-06-19T09:49:44.000Z' 
+}                                      */
+
+/*
+ {
+  name: 'Kuda Bank',
+  slug: 'kuda-bank',
+  code: '50211',
+  longcode: '',
+  gateway: 'digitalbankmandate',
+  pay_with_bank: true,
+  active: true,
+  is_deleted: false,
+  country: 'Nigeria',
+  currency: 'NGN',
+  type: 'nuban',
+  id: 67,
+  createdAt: '2019-11-15T17:06:54.000Z',
+  updatedAt: '2020-07-01T15:05:18.000Z'
+    }, 
+ */

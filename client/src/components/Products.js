@@ -22,54 +22,39 @@ function Products() {
   };
 
   useEffect(() => {
-    dispatch({
-      type: "SET_LOADING",
-      payload: true,
-    });
 
-    Axios.get("https://fakestoreapi.com/products").then((result) => {
-      dispatch({
-        type: "GET_PRODUCTS",
-        payload: result.data,
+    const isProductGotten = JSON.parse(localStorage.getItem("isProductGotten"))
+
+    // If i do not have a product in the Ui
+    // Then fetch products.
+    if (!isProductGotten) {
+        // start loader
+        dispatch({
+          type: "SET_LOADING",
+          payload: true,
+        });
+      
+        Axios.get("https://fakestoreapi.com/products").then((result) => {
+        localStorage.setItem("isProductGotten", JSON.stringify(true))
+        dispatch({
+          type: "GET_PRODUCTS",
+          payload: result.data,
+        });
+
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
+        // console.table("Result from the get Request", result.data);
+      })
+      .catch((err) => {
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
+        alert("ERR! Could not fetch Products at this time, please try again!")
       });
-
-      dispatch({
-        type: "SET_LOADING",
-        payload: false,
-      });
-      // console.table("Result from the get Request", result.data);
-    })
-    .catch((err) => {
-      dispatch({
-        type: "SET_LOADING",
-        payload: false,
-      });
-      alert("ERR! Could not fetch Products at this time, please try again!")
-    });
-
-    // async function getProducts() {
-    //   try {
-    //     const response = await Axios.get("https://fakestoreapi.com/products")
-    //     if (response) {
-    //       dispatch({
-    //         type: "GET_PRODUCTS",
-    //         payload: response.data,
-    //       });
-    
-    //       dispatch({
-    //         type: "SET_LOADING",
-    //         payload: false,
-    //       });
-    //       // console.table("Result from the get Request", response.data);
-    //     }
-    //    } catch (error) {
-    //     console.log(":cannot GET PRODUTS ERR!", error)
-    //   }
-    // }
-
-    // state.products = [] ?
-    //   getProducts() :
-    //   dispatch({ type: "SET_LOADING", payload: false });
+    }
 
   }, []);
 
