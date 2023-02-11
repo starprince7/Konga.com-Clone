@@ -44,6 +44,7 @@ function Payment(props) {
       .then((res) => {
         console.log("Success in verfiying Transcation", res);
         cartDispatch({type: "CLEAR_CART"})
+        localStorage.removeItem("isProductGotten")
         props.history.push("/");
       })
       .catch((error) => console.log(error));

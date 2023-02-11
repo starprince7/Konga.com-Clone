@@ -245,7 +245,7 @@ const getBanks = async () => {
 
   const options = {
     headers: {
-      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`,
+      Authorization: `Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9`, /* sk_live_0f002e93d3456a7e0aaa8d54073a6b65525aef9f */
     },
   };
 
@@ -299,7 +299,7 @@ const makeTransfer = async () => {
   }
 }
 
-const transferFund = () => {
+const createReceiver = () => {
   console.log("Transfering fund...")
 
   const https = require('https')
@@ -335,14 +335,14 @@ const transferFund = () => {
   req.end()
 }
 
-const transferFundSending = () => {
+const transferFund = () => {
   console.log("Transfering... Scary!")
   
   const https = require('https')
   const params = JSON.stringify({
     "source": "balance",
     "amount": 3794800,
-    "recipient": "RCP_0h5kg71lx16t9vo",
+    "recipient": 'RCP_5x545x1if368u13',
     "reason": "Holiday Flexing"
   })
   const options = {
@@ -380,7 +380,7 @@ const getBalance = async () => {
     path: '/balance',
     method: 'GET',
     headers: {
-      Authorization: 'Bearer sk_test_ae5a8f1422658ab701bcc4cbcb6df61e7be39dc9'
+      Authorization: 'Bearer sk_live_0f002e93d3456a7e0aaa8d54073a6b65525aef9f'  /* sk_live_0f002e93d3456a7e0aaa8d54073a6b65525aef9f */
     }
   }
 
@@ -396,8 +396,8 @@ const getBalance = async () => {
 
 // getBanks()
 // makeTransfer()
+// createReceiver()
 // transferFund()
-// transferFundSending()
 getBalance()
 
 /*
